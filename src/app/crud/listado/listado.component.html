@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Inventario</title>
+</head>
+
+<body>
+    <table class="table table-sm table bordered">
+        <thead>
+            <tr>
+                <th class="text-center">id</th>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Precio</th>
+                <th class="text-center">Eliminar</th>
+                <th class="text-center">Seleccionar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let articulos of inventario">
+                <td class="text-center">{{ articulos.id }}</td>
+                <td class="text-center">{{ articulos.nombre }}</td>
+                <td class="text-center">{{ articulos.precio }}</td>
+                <td class="text-center"><button (click)="eliminar(articulos.id)" class="btn btn-outline-danger">Borrar</button></td>
+                <td class="text-center"><button (click)="seleccionar(articulos)" class="btn btn-outline-info">Seleccionar</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        <label for="id">ID</label>
+        <input type="number" class="form-control" [(ngModel)]="formulario.id">
+    </p>
+    <p>
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" [(ngModel)]="formulario.nombre">
+    </p>
+    <p>
+        <label for="precio">Precio</label>
+        <input type="number" class="form-control" [(ngModel)]="formulario.precio">
+    </p>
+    <button (click)="agregar()" class="btn btn-outline-primary">Agregar</button>
+    <button (click)="editar(formulario.id)" class="btn btn-outline-warning">Editar</button>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+
+</html>
